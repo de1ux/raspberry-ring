@@ -17,7 +17,8 @@ RPI_CONFIGS = [
 ]
 RPI_CONFIG = RPI_CONFIGS[0]
 NSQ_HOST = 'http://127.0.0.1:4151'
-
+MAX_DISK_SIZE = 12000000000  # black friday sales blessed me with an ample 16gb
+                             # micro sd for each of these computing beasts
 
 def main():
 
@@ -35,7 +36,7 @@ def main():
                 total_size += os.path.getsize(fp)
         return total_size
 
-    if get_size('rendered/') > :
+    if get_size('rendered/') > MAX_DISK_SIZE:
         call(['killall watch'], shell=True)
 
     filestamp = (
