@@ -6,3 +6,5 @@ Stuff left before 1.0
 - [ ] Document the steps for adding a raspberry pi to the network
 - [ ] Add [SimpleHTTPNode](https://github.com/de1ux/SimpleHTTPNode) as a supervisord process
 - [ ] Automate the nsq startup
+- [ ] Viewer for all the jpg's on the host consumer
+- [ ] Garbage collection plan for nodes 
