@@ -13,15 +13,15 @@ RPI_CONFIGS = [
     },
     {
         'savename': 'rpi2',
-        'resolution': '544x288'
+        'resolution': '1280x720.'
     }
 ]
-RPI_CONFIG = RPI_CONFIGS[0]
+RPI_CONFIG = RPI_CONFIGS[1]
 NSQ_HOST = 'http://192.168.1.14:4151'
 MAX_DISK_SIZE = 12000000000  # black friday sales blessed me with an ample 16gb
                              # micro sd for each of these computing beasts
 
-host = '1' #check_output("ip addr show wlan0  | grep inet", shell=True).split('inet')[1].replace(' ', '').split('/24')[0] + ':9001/'
+host = check_output("ip addr show wlan0  | grep inet", shell=True).split('inet')[1].replace(' ', '').split('/24')[0] + ':9001/'
 
 def publish_on_new_image(image_name):
         topic = 'new_image'
@@ -50,8 +50,7 @@ def main():
     filename = ("%s_%s") % (RPI_CONFIG['savename'], filestamp)
     filepath = "rendered/" + filename
     call(
-        # rpi command should be fswebcam -d /dev/video0 -r %s --save %s
-        ['echo %s %s' % (RPI_CONFIG['resolution'], filepath)],
+        ['fswebcam -d /dev/video0 -r %s --save %s' % (RPI_CONFIG['resolution'], filepath)],
         shell=True
     )
     publish_on_new_image(host + filename)
